@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Am I Toxic? - Self-Assessment Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Am I Toxic?</h1>
+            <p class="subtitle">A self-reflection quiz to identify potential toxic traits</p>
+        </header>
+
+        <div id="start-screen" class="screen active">
+            <div class="intro">
+                <h2>Welcome!</h2>
+                <p>This quiz is designed to help you reflect on your behavior patterns and identify areas where you might be exhibiting toxic traits.</p>
+                <p>Answer honestly - this is for your personal growth, not to judge you.</p>
+                <p><strong>You'll answer 15 questions about various scenarios and behaviors.</strong></p>
+            </div>
+            <button id="start-btn" class="btn btn-primary">Start Quiz</button>
+        </div>
+
+        <div id="quiz-screen" class="screen">
+            <div class="progress-bar">
+                <div id="progress" class="progress-fill"></div>
+            </div>
+            <div class="question-counter">
+                Question <span id="current-question">1</span> of <span id="total-questions">15</span>
+            </div>
+            <div id="question-container">
+                <h2 id="question-text"></h2>
+                <div id="options-container"></div>
+            </div>
+            <button id="next-btn" class="btn btn-primary" disabled>Next</button>
+        </div>
+
+        <div id="results-screen" class="screen">
+            <h2>Your Results</h2>
+            <div id="score-container">
+                <div class="score-circle">
+                    <span id="score-value">0</span>
+                    <span class="score-label">points</span>
+                </div>
+            </div>
+            <div id="result-message"></div>
+            <div id="result-details"></div>
+            <button id="restart-btn" class="btn btn-primary">Take Quiz Again</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
