@@ -229,7 +229,6 @@ function showResults() {
     quizScreen.classList.remove('active');
     resultsScreen.classList.add('active');
     
-    const maxScore = questions.length * 5; // Maximum possible score
     scoreValue.textContent = totalScore;
     
     let message = '';
