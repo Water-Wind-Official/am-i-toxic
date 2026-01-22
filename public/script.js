@@ -1,49 +1,77 @@
-// Quiz questions with polarity-based choices
-// Each question presents two contrasting approaches
-// Users pick which resonates with their thinking
+// Quiz questions with multi-select responses
+// Users select all responses that apply to what they would do
 
 const questions = [
     {
         scenario: "Jordan has been friends with Sam for 8 years. Recently, Sam started dating someone Jordan finds controlling—Sam has canceled plans three times, stopped coming to group events, and seems more withdrawn. When Jordan brings it up, Sam gets defensive and says 'You just don't understand our relationship.' Jordan is genuinely worried but also hurt by being shut out.",
-        polarity: {
-            left: "Stop bringing up the relationship and respect Sam's boundary, even if it feels like rejection",
-            right: "Keep inviting Sam to things and stay emotionally present—isolation needs a counterweight, not silence"
-        }
+        responses: [
+            "Stop bringing up the relationship and respect Sam's stated boundary",
+            "Keep inviting Sam to things without mentioning the partner",
+            "Have a direct conversation expressing worry about the changes in behavior",
+            "Reach out to Sam's family to share concerns",
+            "Write Sam a detailed message with examples of controlling behavior",
+            "Confront Sam's partner directly about the changes",
+            "Wait for Sam to reach out first to avoid seeming pushy",
+            "Distance themselves emotionally to protect against the hurt"
+        ]
     },
     {
         scenario: "Alex manages a small team. One employee, Morgan, has been underperforming for two months—missing deadlines, making errors, and seeming disengaged. Alex has given informal feedback twice. Morgan recently mentioned 'going through some personal stuff' but didn't elaborate. Other team members are starting to complain about picking up Morgan's slack.",
-        polarity: {
-            left: "Assume Morgan is struggling and offer flexibility—work through this together with compassion",
-            right: "Set a clear performance bar and timeline—Morgan needs structure and to know expectations matter"
-        }
+        responses: [
+            "Give Morgan more time and flexibility, understanding they're going through something",
+            "Have a private, empathetic conversation asking what kind of support would help",
+            "Set clear performance expectations with specific deadlines",
+            "Document all of Morgan's mistakes for potential HR purposes",
+            "Tell other team members that Morgan is dealing with personal issues to build compassion",
+            "Offer a temporary leave of absence with the job waiting when ready",
+            "Create a formal improvement plan with consequences if not met",
+            "Ask direct questions about what's going on and listen without judgment"
+        ]
     },
     {
         scenario: "Casey and their partner have been together for 3 years. Recently, Casey discovered their partner has been texting an ex regularly—friendly conversations, nothing overtly romantic, but the partner never mentioned it. When Casey brings it up, the partner says 'It's nothing, we're just friends, and I didn't tell you because I knew you'd overreact.' Casey feels hurt and unsure whether their discomfort is reasonable.",
-        polarity: {
-            left: "Let it go and work on your own jealousy—you might be reading too much into it",
-            right: "Address the secrecy directly—honesty in relationships matters regardless of what's being hidden"
-        }
+        responses: [
+            "Accept the explanation and try to let it go",
+            "Address the secrecy directly—express that the hiding matters more than the texting",
+            "Ask to see the text messages to verify nothing inappropriate happened",
+            "Give an ultimatum: stop texting the ex or break up",
+            "Work on their own jealousy and insecurity about the situation",
+            "Tell close friends to get outside perspective",
+            "Insist on meeting the ex in person to assess the dynamic",
+            "Suggest couples therapy to work through the trust issue"
+        ]
     },
     {
         scenario: "River's elderly parent has been making increasingly poor financial decisions—giving money to obvious phone scams, buying unnecessary insurance policies, forgetting bills. River is worried about cognitive decline but also respects that the parent is a capable adult who has always valued independence. The parent gets angry and says 'I'm not a child' when River tries to help.",
-        polarity: {
-            left: "Respect their autonomy and let them make mistakes—dignity and independence matter",
-            right: "Intervene proactively to protect them—financial ruin is worse than a wounded ego"
-        }
+        responses: [
+            "Respect their autonomy and let them make their own mistakes",
+            "Have a gentle conversation about setting up safeguards together",
+            "Secretly monitor their bank accounts and mail to catch problems",
+            "Contact a doctor to discuss potential cognitive decline without telling the parent",
+            "Involve other family members to present a united front",
+            "Consult an elder law attorney about financial protection options",
+            "Set up automatic bill payments and fraud alerts with the parent's permission",
+            "Set up automatic bill payments and fraud alerts without asking permission"
+        ]
     },
     {
         scenario: "Taylor works on a team where one colleague, Jamie, consistently takes credit for group ideas in meetings, interrupts others, and dismisses feedback. Multiple people have noticed but no one says anything because Jamie is well-liked by upper management. Taylor is frustrated but also aware that complaining could seem like jealousy or create drama.",
-        polarity: {
-            left: "Keep your head down and do good work—getting involved will make you look petty",
-            right: "Speak up about it—document contributions, talk to Jamie, or tell management the pattern matters"
-        }
+        responses: [
+            "Keep their head down and do excellent work, trusting truth will emerge",
+            "Document their own contributions in writing before meetings",
+            "Talk to other colleagues privately to confirm they're seeing the same pattern",
+            "Address Jamie directly and calmly about taking credit for shared ideas",
+            "Bring the pattern to HR or management as a workplace culture issue",
+            "Adopt similar tactics to be more assertive about claiming credit",
+            "Mentally disengage and focus on aspects of life outside work",
+            "Create a paper trail of emails showing their contributions"
+        ]
     }
 ];
 
 let currentQuestionIndex = 0;
-let totalScore = 0;
-let allChoices = [];
-let deviationDetails = [];
+let allSelections = [];
+let questionAnalysis = [];
 
 // DOM elements
 const startScreen = document.getElementById('start-screen');
@@ -73,8 +101,8 @@ function startQuiz() {
     startScreen.classList.remove('active');
     quizScreen.classList.add('active');
     currentQuestionIndex = 0;
-    totalScore = 0;
-    allRatings = [];
+    allSelections = [];
+    questionAnalysis = [];
     showQuestion();
 }
 
@@ -91,172 +119,128 @@ function showQuestion() {
     optionsContainer.innerHTML = '';
     nextBtn.disabled = true;
     
-    // Create polarity buttons
-    const polarityContainer = document.createElement('div');
-    polarityContainer.className = 'polarity-container';
+    // Create checkboxes for multiple selection
+    const optionsDiv = document.createElement('div');
+    optionsDiv.className = 'options-grid';
     
-    // Left button
-    const leftBtn = document.createElement('button');
-    leftBtn.className = 'polarity-btn left-btn';
-    leftBtn.textContent = question.polarity.left;
-    leftBtn.addEventListener('click', () => selectPolarity('left', leftBtn));
+    question.responses.forEach((response, index) => {
+        const checkboxContainer = document.createElement('div');
+        checkboxContainer.className = 'checkbox-item';
+        
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = `response-${currentQuestionIndex}-${index}`;
+        checkbox.className = 'response-checkbox';
+        checkbox.addEventListener('change', () => updateNextButton());
+        
+        const label = document.createElement('label');
+        label.htmlFor = checkbox.id;
+        label.textContent = response;
+        
+        checkboxContainer.appendChild(checkbox);
+        checkboxContainer.appendChild(label);
+        optionsDiv.appendChild(checkboxContainer);
+    });
     
-    // Right button
-    const rightBtn = document.createElement('button');
-    rightBtn.className = 'polarity-btn right-btn';
-    rightBtn.textContent = question.polarity.right;
-    rightBtn.addEventListener('click', () => selectPolarity('right', rightBtn));
-    
-    polarityContainer.appendChild(leftBtn);
-    polarityContainer.appendChild(rightBtn);
-    optionsContainer.appendChild(polarityContainer);
+    optionsContainer.appendChild(optionsDiv);
 }
 
-function selectPolarity(choice, buttonEl) {
-    // Mark button as selected
-    document.querySelectorAll('.polarity-btn').forEach(btn => {
-        btn.classList.remove('selected');
-    });
-    buttonEl.classList.add('selected');
-    
-    // Store choice and enable next button
-    const question = questions[currentQuestionIndex];
-    allChoices.push({
-        questionIndex: currentQuestionIndex,
-        choice: choice,
-        left: question.polarity.left,
-        right: question.polarity.right
-    });
-    
-    nextBtn.disabled = false;
+function updateNextButton() {
+    const checkboxes = document.querySelectorAll('.response-checkbox');
+    const anyChecked = Array.from(checkboxes).some(cb => cb.checked);
+    nextBtn.disabled = !anyChecked;
 }
 
 function nextQuestion() {
+    // Collect selected responses for this question
+    const question = questions[currentQuestionIndex];
+    const checkboxes = document.querySelectorAll('.response-checkbox');
+    const selected = [];
+    
+    checkboxes.forEach((checkbox, index) => {
+        if (checkbox.checked) {
+            selected.push({
+                index: index,
+                text: question.responses[index]
+            });
+        }
+    });
+    
+    allSelections.push({
+        questionIndex: currentQuestionIndex,
+        selected: selected
+    });
+    
     currentQuestionIndex++;
     
     if (currentQuestionIndex < questions.length) {
         showQuestion();
     } else {
-        calculateScore();
+        analyzeResponses();
         showResults();
     }
 }
 
-function calculateScore() {
-    // Analysis: which polarities did the user lean toward?
-    // No "score" per se—we're showing their polarity pattern
-    totalScore = 0;
-    deviationDetails = [];
+function analyzeResponses() {
+    // Build analysis of what they selected
+    questionAnalysis = [];
     
-    let leftCount = 0;
-    let rightCount = 0;
-    
-    allChoices.forEach((choice) => {
-        if (choice.choice === 'left') {
-            leftCount++;
-        } else {
-            rightCount++;
-        }
-        
-        deviationDetails.push({
-            left: choice.left,
-            right: choice.right,
-            chosen: choice.choice
+    allSelections.forEach((selection) => {
+        const question = questions[selection.questionIndex];
+        questionAnalysis.push({
+            scenario: question.scenario,
+            responses: question.responses,
+            selected: selection.selected
         });
     });
-    
-    // Simple summary: 0 = balanced, positive = leans right, negative = leans left
-    totalScore = rightCount - leftCount;
 }
 
 function showResults() {
     quizScreen.classList.remove('active');
     resultsScreen.classList.add('active');
     
-    scoreValue.textContent = totalScore >= 0 ? `+${totalScore}` : totalScore;
+    // Build the breakdown of their selections
+    let breakdownHTML = '<h3>What You Would Do:</h3>';
+    breakdownHTML += '<div class="selections-breakdown">';
     
-    // Build the breakdown of their polarity choices
-    let breakdownHTML = '<h3>Your Polarity Choices:</h3>';
-    breakdownHTML += '<div class="breakdown-list">';
-    
-    deviationDetails.forEach((detail, index) => {
-        const chosenClass = detail.chosen === 'left' ? 'chosen-left' : 'chosen-right';
-        breakdownHTML += `
-            <div class="polarity-breakdown ${chosenClass}">
-                <div class="polarity-choice-label">${detail.chosen === 'left' ? 'You chose LEFT:' : 'You chose RIGHT:'}</div>
-                <div class="polarity-choice-text">"${detail.chosen === 'left' ? detail.left : detail.right}"</div>
-                <div class="polarity-other-text">Other perspective: "${detail.chosen === 'left' ? detail.right : detail.left}"</div>
-            </div>
-        `;
+    questionAnalysis.forEach((analysis, qIndex) => {
+        breakdownHTML += `<div class="scenario-summary">`;
+        breakdownHTML += `<h4>Scenario ${qIndex + 1}:</h4>`;
+        breakdownHTML += `<div class="selected-responses">`;
+        
+        analysis.selected.forEach((selected) => {
+            breakdownHTML += `<div class="selected-item">✓ ${selected.text}</div>`;
+        });
+        
+        breakdownHTML += `</div></div>`;
     });
     
     breakdownHTML += '</div>';
     
-    let message = '';
-    let details = '';
+    let message = `
+        <h3>Your Relational Response Pattern</h3>
+        <p>You selected ${allSelections.reduce((sum, s) => sum + s.selected.length, 0)} total actions across all scenarios. Here's what your choices reveal about how you handle conflict and connection:</p>
+    `;
     
-    if (totalScore <= -3) {
-        message = `
-            <h3>🛡️ Protective & Boundary-Focused</h3>
-            <p>You lean toward respecting autonomy, stepping back, and trusting people to figure things out. You value privacy and avoid overstepping.</p>
-        `;
-        details = `
-            <h4>Your Pattern:</h4>
-            <p>You tend to:</p>
-            <ul>
-                <li>Prioritize respect for people's autonomy and dignity</li>
-                <li>Avoid intervening unless explicitly asked</li>
-                <li>Trust people to make their own choices</li>
-                <li>Protect privacy and not involve others unnecessarily</li>
-            </ul>
-            <h4>To Consider:</h4>
-            <p>Stepping back can sometimes feel like abandonment. There's a middle ground between hovering and disappearing entirely. Direct, honest communication acknowledges both respect AND care.</p>
-        `;
-    } else if (totalScore >= 3) {
-        message = `
-            <h3>⚡ Action-Oriented & Protective</h3>
-            <p>You lean toward direct communication, setting boundaries, and taking action when you see problems. You believe in being clear and active about concerns.</p>
-        `;
-        details = `
-            <h4>Your Pattern:</h4>
-            <p>You tend to:</p>
-            <ul>
-                <li>Address issues directly rather than avoiding them</li>
-                <li>Take protective action when you see someone in trouble</li>
-                <li>Set clear expectations and boundaries</li>
-                <li>Speak up about patterns that concern you</li>
-            </ul>
-            <h4>To Consider:</h4>
-            <p>Action and protection can sometimes feel controlling. The goal isn't to fix people—it's to be honest about what you see and give them the information to decide for themselves.</p>
-        `;
-    } else {
-        message = `
-            <h3>⚖️ Balanced & Context-Dependent</h3>
-            <p>You see value in both approaches depending on the situation. You know when to speak up and when to step back.</p>
-        `;
-        details = `
-            <h4>Your Pattern:</h4>
-            <p>You're able to:</p>
-            <ul>
-                <li>Assess situations without rigid rules</li>
-                <li>Balance respect for autonomy with honest communication</li>
-                <li>Know when to act and when to wait</li>
-                <li>Avoid both overstepping and abandonment</li>
-            </ul>
-            <h4>Strength:</h4>
-            <p>This nuanced approach is exactly what healthy relationships need. Context matters, people are complex, and good judgment means knowing the difference.</p>
-        `;
-    }
+    let details = `
+        ${breakdownHTML}
+        <h4>What to Consider:</h4>
+        <ul>
+            <li>Do you typically combine multiple approaches, or stick to one strategy?</li>
+            <li>Are you acting from a place of protection, communication, or boundary-setting?</li>
+            <li>When you'd take action, is it direct or indirect?</li>
+            <li>Are there patterns in when you step back vs. when you intervene?</li>
+        </ul>
+    `;
     
     resultMessage.innerHTML = message;
-    resultDetails.innerHTML = breakdownHTML + details;
+    resultDetails.innerHTML = details;
 }
 
 function restartQuiz() {
     resultsScreen.classList.remove('active');
     startScreen.classList.add('active');
     currentQuestionIndex = 0;
-    totalScore = 0;
-    allChoices = [];
-    deviationDetails = [];
+    allSelections = [];
+    questionAnalysis = [];
 }
