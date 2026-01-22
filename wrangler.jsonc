@@ -1,0 +1,9 @@
+{
+  "name": "am-i-toxic",
+  "type": "javascript",
+  "compatibility_date": "2026-01-22",
+  "main": "index.html",
+  "assets": {
+    "directory": "."
+  }
+}
