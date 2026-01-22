@@ -1,57 +1,69 @@
 // Quiz questions with rating-based scenarios
+// Design principles:
+// - Ideal ranges vary (some best responses are 4-6, not 9-10)
+// - Some "reasonable-sounding" responses are problematic
+// - Some "harsh-sounding" responses are actually appropriate
+// - Includes sincerely misguided perspectives that feel relatable
+
 const questions = [
     {
-        scenario: "Mike and Sarah work on a project. Mike presents their joint work to the manager but forgets to mention Sarah's significant contributions.",
+        scenario: "Jordan has been friends with Sam for 8 years. Recently, Sam started dating someone Jordan finds controlling—Sam has canceled plans three times, stopped coming to group events, and seems more withdrawn. When Jordan brings it up, Sam gets defensive and says 'You just don't understand our relationship.' Jordan is genuinely worried but also hurt by being shut out.",
         responses: [
-            { text: "Sarah tells other coworkers what happened" },
-            { text: "Sarah tells others that Mike is a 'backstabber' and can't be trusted" },
-            { text: "Sarah directly tells the project manager about her contributions" },
-            { text: "Sarah tells Mike she no longer wants to work with him" }
+            { text: "Jordan decides to give Sam space and stop bringing it up, trusting that Sam is an adult who can make their own choices", idealRange: [3, 5] },
+            { text: "Jordan tells Sam: 'I've noticed you seem different lately. I miss you and I'm worried. I'm here if you ever want to talk, no pressure'", idealRange: [8, 10] },
+            { text: "Jordan reaches out to Sam's family members to share concerns about the relationship and asks them to intervene", idealRange: [2, 4] },
+            { text: "Jordan writes Sam a long message explaining exactly why the partner seems controlling, with specific examples and articles about unhealthy relationships", idealRange: [3, 5] },
+            { text: "Jordan stops initiating contact and waits for Sam to reach out first, to avoid being 'that friend' who can't let go", idealRange: [2, 4] },
+            { text: "Jordan confronts Sam's partner directly about the changes they've noticed in Sam's behavior", idealRange: [1, 3] },
+            { text: "Jordan keeps inviting Sam to things without mentioning the relationship, maintaining the door for connection", idealRange: [7, 9] }
         ]
     },
     {
-        scenario: "Emma set a boundary with her close friend Jessica: no jokes about her appearance. Jessica makes a joke about Emma's outfit at dinner.",
+        scenario: "Alex manages a small team. One employee, Morgan, has been underperforming for two months—missing deadlines, making errors, and seeming disengaged. Alex has given informal feedback twice. Morgan recently mentioned 'going through some personal stuff' but didn't elaborate. Other team members are starting to complain about picking up Morgan's slack.",
         responses: [
-            { text: "Emma says nothing and silently feels hurt for days" },
-            { text: "Emma snaps back: 'That's exactly the kind of comment I asked you to stop making'" },
-            { text: "Emma calmly tells Jessica in the moment that she's hurt and reminds her of the boundary" },
-            { text: "Emma tells Jessica they can't be friends anymore if she keeps disrespecting her" }
+            { text: "Alex gives Morgan more time and flexibility, understanding that everyone goes through hard periods and work isn't everything", idealRange: [3, 5] },
+            { text: "Alex has a private conversation: 'I've noticed ongoing issues with your work. I want to support you, but I also need to understand if there's something we can do or if this role isn't working right now'", idealRange: [8, 10] },
+            { text: "Alex documents all of Morgan's mistakes carefully in case they need evidence for HR later", idealRange: [4, 6] },
+            { text: "Alex redistributes Morgan's important work to reliable team members to protect the team's output", idealRange: [5, 7] },
+            { text: "Alex tells the complaining team members that Morgan is 'dealing with personal issues' to help them be more understanding", idealRange: [1, 3] },
+            { text: "Alex sets clear, written expectations with specific deadlines and consequences, giving Morgan a formal improvement plan", idealRange: [7, 9] },
+            { text: "Alex suggests Morgan take a leave of absence to deal with personal issues, with the job waiting when they're ready", idealRange: [4, 6] }
         ]
     },
     {
-        scenario: "Alex and Jordan are roommates. Jordan leaves dirty dishes in the sink for days. Alex has been quietly frustrated for weeks without saying anything.",
+        scenario: "Casey and their partner have been together for 3 years. Recently, Casey discovered their partner has been texting an ex regularly—friendly conversations, nothing overtly romantic, but the partner never mentioned it. When Casey brings it up, the partner says 'It's nothing, we're just friends, and I didn't tell you because I knew you'd overreact.' Casey feels hurt and unsure whether their discomfort is reasonable.",
         responses: [
-            { text: "Alex leaves passive-aggressive notes about the mess" },
-            { text: "Alex starts leaving Jordan's dishes in Jordan's room to 'teach a lesson'" },
-            { text: "Alex vents to mutual friends about how inconsiderate Jordan is" },
-            { text: "Alex talks to Jordan calmly and says 'I've noticed dishes piling up. Can we figure out a system that works for both of us?'" }
+            { text: "Casey accepts the explanation and tries to let it go, recognizing that jealousy is often insecurity rather than intuition", idealRange: [2, 4] },
+            { text: "Casey says: 'I'm not saying you can't have friends, but the secrecy bothers me more than the texting. I need us to be honest with each other'", idealRange: [8, 10] },
+            { text: "Casey asks to see all the text messages to verify that nothing inappropriate happened", idealRange: [3, 5] },
+            { text: "Casey gives an ultimatum: stop texting the ex or the relationship is over", idealRange: [2, 4] },
+            { text: "Casey focuses on their own behavior, wondering if they've been too jealous or controlling in the past to make their partner hide things", idealRange: [4, 6] },
+            { text: "Casey tells close friends about the situation to get outside perspective on whether they're overreacting", idealRange: [5, 7] },
+            { text: "Casey insists on meeting the ex in person so they can assess the dynamic themselves", idealRange: [3, 5] }
         ]
     },
     {
-        scenario: "Devon loaned his family $2,000 six months ago. It hasn't been repaid and nobody brings it up. Devon is frustrated.",
+        scenario: "River's elderly parent has been making increasingly poor financial decisions—giving money to obvious phone scams, buying unnecessary insurance policies, forgetting bills. River is worried about cognitive decline but also respects that the parent is a capable adult who has always valued independence. The parent gets angry and says 'I'm not a child' when River tries to help.",
         responses: [
-            { text: "Devon brings it up angrily at the next family gathering in front of everyone" },
-            { text: "Devon tells other family members about the loan to pressure the borrower" },
-            { text: "Devon privately tells the borrower: 'I need to talk about the loan. Can we make a repayment plan?'" },
-            { text: "Devon uses guilt: 'If you cared about our relationship, you'd prioritize paying me back'" }
+            { text: "River backs off and respects the parent's autonomy, understanding that dignity matters more than preventing every mistake", idealRange: [2, 4] },
+            { text: "River has a gentle conversation: 'I've noticed some things that worry me. Can we talk about setting up some safeguards together, just in case?'", idealRange: [7, 9] },
+            { text: "River secretly monitors the parent's bank accounts and mail to catch problems before they get worse", idealRange: [3, 5] },
+            { text: "River contacts a doctor to discuss the parent's cognitive state without the parent's knowledge", idealRange: [4, 6] },
+            { text: "River involves other family members to present a united front and convince the parent to accept help", idealRange: [5, 7] },
+            { text: "River consults an elder law attorney about options for financial protection, even if the parent objects", idealRange: [6, 8] },
+            { text: "River sets up automatic bill payments and fraud alerts on the parent's accounts after getting reluctant permission", idealRange: [8, 10] }
         ]
     },
     {
-        scenario: "Casey's boss gives critical feedback: their project had sloppy work and missed details. The boss is right. Casey feels embarrassed and defensive.",
+        scenario: "Taylor works on a team where one colleague, Jamie, consistently takes credit for group ideas in meetings, interrupts others, and dismisses feedback. Multiple people have noticed but no one says anything because Jamie is well-liked by upper management. Taylor is frustrated but also aware that complaining could seem like jealousy or create drama.",
         responses: [
-            { text: "Casey argues that the work wasn't actually that bad" },
-            { text: "Casey makes excuses about being busy or having personal issues" },
-            { text: "Casey thanks the boss and asks for specifics: 'Can you show me exactly what I missed so I can improve?'" },
-            { text: "Casey apologizes sincerely and outlines a plan to prevent future errors" }
-        ]
-    },
-    {
-        scenario: "Taylor notices their partner has been distant and withdrawn for a week. When Taylor asks 'Is something wrong?' the partner says 'Nothing, I'm fine.' Taylor suspects they're lying.",
-        responses: [
-            { text: "Taylor ignores it and lets the partner come around on their own" },
-            { text: "Taylor keeps asking repeatedly until the partner admits something is wrong" },
-            { text: "Taylor respects the space but says: 'I'm here if you want to talk. I care about you'" },
-            { text: "Taylor assumes the partner is upset with them and gets defensive first" }
+            { text: "Taylor focuses on doing excellent work and trusts that eventually the truth will become apparent to management", idealRange: [3, 5] },
+            { text: "Taylor starts documenting their own contributions in writing before meetings so there's a clear record", idealRange: [7, 9] },
+            { text: "Taylor talks to other colleagues privately to confirm they're not the only one noticing the pattern", idealRange: [5, 7] },
+            { text: "Taylor addresses Jamie directly: 'Hey, in the last meeting you presented the idea I shared with you as your own. I'd appreciate acknowledgment when I contribute'", idealRange: [8, 10] },
+            { text: "Taylor brings the pattern to HR or management, framing it as a workplace culture concern rather than a personal complaint", idealRange: [5, 7] },
+            { text: "Taylor adopts similar tactics—being more assertive about claiming credit and interrupting when needed to be heard", idealRange: [2, 4] },
+            { text: "Taylor mentally disengages, accepting that workplace politics are unavoidable and focusing on other aspects of life", idealRange: [2, 4] }
         ]
     }
 ];
@@ -177,48 +189,34 @@ function nextQuestion() {
 }
 
 function calculateScore() {
-    // Score based on how they rated responses
-    // Healthier responses (appropriate) = low numbers (1-3)
-    // Toxic responses (inappropriate) = high numbers (8-10)
-    // Scoring: if they rate toxic behavior high = bad score, if they rate healthy behavior low = good score
-    // We want to penalize rating inappropriate things as appropriate
+    // Score based on how close ratings are to ideal ranges
+    // Better: ratings close to ideal range = lower score
+    // Worse: ratings far from ideal range = higher score
     
-    // For each response in the original questions array, we know if it's healthy or toxic based on position/pattern
-    // Responses at even indices (0, 2, 4...) tend to be healthier
-    // Responses at odd indices tend to be less healthy
-    
-    let toxicityScore = 0;
+    let totalDeviation = 0;
     
     allRatings.forEach((scenarioRatings, scenarioIndex) => {
         scenarioRatings.forEach((rating, responseIndex) => {
             const response = questions[scenarioIndex].responses[responseIndex];
+            const [minIdeal, maxIdeal] = response.idealRange;
             
-            // Determine if response is healthy or toxic based on keywords
-            const isHealthy = 
-                response.text.includes('calmly') ||
-                response.text.includes('directly') ||
-                response.text.includes('thanks') ||
-                response.text.includes('asks') ||
-                response.text.includes('respectfully') ||
-                response.text.includes("I'm here if you want to talk") ||
-                response.text.includes('can we') ||
-                response.text.includes('listen') ||
-                response.text.includes('validate') ||
-                response.text.includes('sincere') ||
-                (responseIndex === 2 && questions[scenarioIndex].responses.length === 4);
+            // Calculate how far from ideal range
+            let deviation = 0;
             
-            // Calculate score: rating high (8-10) for toxic = bad, rating low (1-3) for healthy = bad
-            if (isHealthy) {
-                // Healthy response: lower rating = worse. Add (11 - rating) to score
-                toxicityScore += (11 - rating);
-            } else {
-                // Toxic response: higher rating = worse. Add rating to score
-                toxicityScore += rating;
+            if (rating < minIdeal) {
+                // Rated too low (inappropriately low for good response, or not low enough for bad response)
+                deviation = minIdeal - rating;
+            } else if (rating > maxIdeal) {
+                // Rated too high (inappropriately high for bad response, or not high enough for good response)
+                deviation = rating - maxIdeal;
             }
+            // If rating is within ideal range, deviation = 0 (perfect!)
+            
+            totalDeviation += deviation;
         });
     });
     
-    totalScore = toxicityScore;
+    totalScore = totalDeviation;
 }
 
 function showResults() {
@@ -227,71 +225,75 @@ function showResults() {
     
     scoreValue.textContent = totalScore;
     
+    // 5 scenarios × ~7 responses = ~35 ratings
+    // Max possible deviation roughly 35 × 9 = 315
+    // Scoring tiers adjusted accordingly
+    
     let message = '';
     let details = '';
     
-    if (totalScore <= 50) {
+    if (totalScore <= 15) {
         message = `
-            <h3>🌟 Exceptional Conflict Resolution Skills!</h3>
-            <p>You consistently recognize and value healthy, respectful responses to conflict. You understand the importance of direct communication, empathy, and respecting others' boundaries.</p>
+            <h3>🌟 Exceptional Relational Insight</h3>
+            <p>You demonstrate nuanced understanding of complex interpersonal situations. You recognize that good responses aren't always the "nicest" or most aggressive—context matters, and you navigate that well.</p>
         `;
         details = `
-            <h4>Your Approach Shows:</h4>
+            <h4>What This Reflects:</h4>
             <ul>
-                <li>Strong ability to recognize appropriate vs inappropriate responses</li>
-                <li>Understanding of healthy communication patterns</li>
-                <li>Recognition that gossip and passive-aggression damage relationships</li>
-                <li>Value placed on direct, calm conversations</li>
-                <li>Commitment to setting and respecting boundaries</li>
+                <li>You understand that respecting autonomy and expressing concern can coexist</li>
+                <li>You recognize when direct confrontation helps vs. when it creates defensiveness</li>
+                <li>You see the value in documentation and self-protection without becoming paranoid</li>
+                <li>You understand that secrecy in relationships is often more concerning than the secret itself</li>
+                <li>You balance firmness with compassion effectively</li>
             </ul>
         `;
-    } else if (totalScore <= 75) {
+    } else if (totalScore <= 35) {
         message = `
-            <h3>👍 Strong Conflict Resolution Understanding</h3>
-            <p>You generally recognize healthy approaches to conflict, though you may occasionally underestimate the impact of certain unhealthy behaviors, or overestimate the appropriateness of mildly toxic responses.</p>
+            <h3>👍 Strong Judgment with Some Blind Spots</h3>
+            <p>You handle most interpersonal situations thoughtfully, but some responses suggest you might overcorrect in certain directions—perhaps being too passive to avoid conflict, or too confrontational when patience would help.</p>
         `;
         details = `
-            <h4>Areas for Reflection:</h4>
+            <h4>Common Patterns to Consider:</h4>
             <ul>
-                <li>Consider how gossip affects trust, even when intended as venting</li>
-                <li>Notice how passive-aggression damages relationships more than direct conversation</li>
-                <li>Reflect on the power of truly listening without offering unsolicited advice</li>
-                <li>Think about how guilt and manipulation undermine relationships</li>
-                <li>Remember that respecting boundaries is a sign of care, not rejection</li>
+                <li>Are you avoiding difficult conversations by calling it "respecting their autonomy"?</li>
+                <li>Are you demanding transparency from others in ways that feel controlling?</li>
+                <li>Do you sometimes believe the "obvious" good response without considering context?</li>
+                <li>Are there situations where you assume bad intent too quickly—or too slowly?</li>
             </ul>
+            <p>Reflect on the responses where your rating differed most from the ideal range. Those reveal your specific growth areas.</p>
         `;
-    } else if (totalScore <= 100) {
+    } else if (totalScore <= 60) {
         message = `
-            <h3>⚠️ Inconsistent Recognition of Healthy Responses</h3>
-            <p>Your ratings suggest you find some toxic or unhealthy responses more acceptable than they actually are. You may sometimes justify or rationalize harmful behaviors.</p>
+            <h3>⚠️ Mixed Relational Patterns</h3>
+            <p>Your responses suggest inconsistency in how you evaluate interpersonal situations. You may sometimes confuse passivity with kindness, or assertiveness with aggression. This can lead to misread situations and damaged relationships.</p>
         `;
         details = `
-            <h4>Important Reflections:</h4>
+            <h4>Questions to Reflect On:</h4>
             <ul>
-                <li>Gossip and talking behind someone's back damages relationships and trust</li>
-                <li>Passive-aggression (silent treatment, notes, etc.) is still aggression</li>
-                <li>Public callouts and anger in conflict typically escalate rather than resolve</li>
-                <li>Guilt and manipulation may work short-term but destroy relationships long-term</li>
-                <li>Direct, calm conversation is almost always more appropriate than indirect approaches</li>
-                <li>Consider working with a therapist to examine your conflict patterns</li>
+                <li>Do you avoid speaking up because it feels "easier," then resent the other person?</li>
+                <li>Do you sometimes escalate conflicts by involving others unnecessarily?</li>
+                <li>Do you mistake controlling behavior for care, or distance for respect?</li>
+                <li>Are you quick to assume you're wrong to avoid conflict—or quick to assume you're right?</li>
+                <li>Do you believe that pointing out someone's flaw excuses how you pointed it out?</li>
             </ul>
+            <p>Working with a therapist or reading about healthy attachment styles could provide valuable perspective.</p>
         `;
     } else {
         message = `
-            <h3>🚨 Significant Misalignment with Healthy Responses</h3>
-            <p>Your ratings suggest you find many unhealthy and toxic responses to be appropriate or acceptable. This pattern indicates you may benefit from professional support to develop healthier conflict resolution skills.</p>
+            <h3>🚨 Significant Misalignment in Relational Judgment</h3>
+            <p>Your responses show patterns that, if acted upon, would likely harm relationships. This might reflect past experiences that normalized unhealthy dynamics, or beliefs about relationships that need reexamination.</p>
         `;
         details = `
-            <h4>Critical Areas for Change:</h4>
+            <h4>Important Considerations:</h4>
             <ul>
-                <li>Seek professional help (therapist/counselor) to understand conflict patterns</li>
-                <li>Recognize that gossip, blame, and anger worsen conflicts rather than resolve them</li>
-                <li>Understand that direct, respectful communication is almost always more effective</li>
-                <li>Learn why guilt, manipulation, and isolation harm relationships</li>
-                <li>Develop awareness of how your responses affect others</li>
-                <li>Work on taking responsibility rather than making excuses or shifting blame</li>
-                <li>Learn that respecting others' boundaries is a strength, not a weakness</li>
+                <li>Passive responses aren't always kind—sometimes they're avoidant and breed resentment</li>
+                <li>Aggressive responses aren't always honest—sometimes they're just aggressive</li>
+                <li>Involving others in conflicts usually escalates rather than resolves them</li>
+                <li>Secrecy and surveillance both damage trust, even when justified</li>
+                <li>Taking care of yourself doesn't require ignoring others' legitimate concerns</li>
+                <li>Protecting someone doesn't justify overriding their autonomy</li>
             </ul>
+            <p><strong>Consider seeking professional support to explore these patterns.</strong> A therapist can help you understand where these beliefs come from and develop healthier approaches.</p>
         `;
     }
     
@@ -305,90 +307,4 @@ function restartQuiz() {
     currentQuestionIndex = 0;
     totalScore = 0;
     allRatings = [];
-}
-
-function showResults() {
-    quizScreen.classList.remove('active');
-    resultsScreen.classList.add('active');
-    
-    scoreValue.textContent = totalScore;
-    
-    let message = '';
-    let details = '';
-    
-    if (totalScore <= 5) {
-        message = `
-            <h3>🌟 Exceptional Conflict Resolution Skills!</h3>
-            <p>You demonstrate outstanding ability to handle difficult situations with empathy, clear communication, and genuine concern for all parties involved. You understand that healthy relationships require respect, accountability, and mutual effort.</p>
-        `;
-        details = `
-            <h4>Your Strengths:</h4>
-            <ul>
-                <li>You approach conflicts calmly and seek to understand all perspectives</li>
-                <li>You take accountability while showing empathy to others</li>
-                <li>You create solutions that work for everyone, not just yourself</li>
-                <li>You understand boundaries and respect them consistently</li>
-                <li>You listen actively and validate others' feelings</li>
-            </ul>
-        `;
-    } else if (totalScore <= 12) {
-        message = `
-            <h3>👍 Strong Communication Patterns</h3>
-            <p>You generally handle conflicts well and care about relationships. You have a solid understanding of healthy communication, though there are occasional moments where you could improve emotional regulation or perspective-taking.</p>
-        `;
-        details = `
-            <h4>Areas for Growth:</h4>
-            <ul>
-                <li>Practice staying calm when receiving criticism without becoming defensive</li>
-                <li>Work on listening fully before responding, especially in heated moments</li>
-                <li>Remember that boundaries are healthy and not personal rejection</li>
-                <li>Avoid making assumptions - ask clarifying questions instead</li>
-                <li>Consider the other person's perspective even when you disagree</li>
-            </ul>
-        `;
-    } else if (totalScore <= 22) {
-        message = `
-            <h3>⚠️ Inconsistent Conflict Resolution Patterns</h3>
-            <p>Your responses show a mix of healthy and unhealthy approaches. You sometimes handle conflicts well, but other times revert to defensive, avoidant, or manipulative strategies. This inconsistency can confuse others and damage relationships.</p>
-        `;
-        details = `
-            <h4>Important Areas for Development:</h4>
-            <ul>
-                <li>Learn to separate criticism of your actions from criticism of your character</li>
-                <li>Practice addressing issues when they're small instead of letting resentment build</li>
-                <li>Develop genuine apologies: acknowledge the harm, take responsibility, offer solutions</li>
-                <li>Stop using guilt, blame-shifting, or silence as conflict tactics</li>
-                <li>Build empathy by asking 'What might they be feeling right now?'</li>
-                <li>Understand that respecting boundaries is not rejection</li>
-            </ul>
-        `;
-    } else {
-        message = `
-            <h3>🚨 Harmful Conflict Patterns Present</h3>
-            <p>Your responses consistently show unhealthy approaches to conflict that damage relationships: defensiveness, blame-shifting, manipulation, avoidance, or lack of empathy. These patterns are likely causing significant relationship problems.</p>
-        `;
-        details = `
-            <h4>Critical Areas Requiring Change:</h4>
-            <ul>
-                <li>Seek professional help (therapist/counselor) to understand your conflict patterns</li>
-                <li>Practice taking accountability without making excuses or shifting blame</li>
-                <li>Learn to manage emotional reactions in the moment (pause, breathe, respond later if needed)</li>
-                <li>Stop using silence, guilt, manipulation, or anger to 'win' arguments</li>
-                <li>Develop genuine empathy: try to truly understand the other person's experience</li>
-                <li>Respect others' boundaries as non-negotiable, not as personal attacks</li>
-                <li>Work on apologizing sincerely: 'I was wrong because... I understand how that made you feel... Here's how I'll do better'</li>
-            </ul>
-        `;
-    }
-    
-    resultMessage.innerHTML = message;
-    resultDetails.innerHTML = details;
-}
-
-function restartQuiz() {
-    resultsScreen.classList.remove('active');
-    startScreen.classList.add('active');
-    currentQuestionIndex = 0;
-    totalScore = 0;
-    selectedAnswer = null;
 }
