@@ -1,7 +1,9 @@
 {
   "name": "am-i-toxic",
   "compatibility_date": "2026-01-22",
+  "main": "src/index.js",
   "assets": {
-    "directory": "."
+    "directory": "public",
+    "binding": "ASSETS"
   }
 }
