@@ -9,11 +9,11 @@ const questions = [
     {
         scenario: "Jordan has been friends with Sam for 8 years. Recently, Sam started dating someone Jordan finds controlling—Sam has canceled plans three times, stopped coming to group events, and seems more withdrawn. When Jordan brings it up, Sam gets defensive and says 'You just don't understand our relationship.' Jordan is genuinely worried but also hurt by being shut out.",
         responses: [
-            { text: "Jordan decides to give Sam space and stop bringing it up, trusting that Sam is an adult who can make their own choices", idealRange: [3, 5] },
+            { text: "Jordan decides to give Sam space and stop bringing it up, trusting that Sam is an adult who can make their own choices", idealRange: [4, 6] },
             { text: "Jordan tells Sam: 'I've noticed you seem different lately. I miss you and I'm worried. I'm here if you ever want to talk, no pressure'", idealRange: [8, 10] },
             { text: "Jordan reaches out to Sam's family members to share concerns about the relationship and asks them to intervene", idealRange: [2, 4] },
             { text: "Jordan writes Sam a long message explaining exactly why the partner seems controlling, with specific examples and articles about unhealthy relationships", idealRange: [3, 5] },
-            { text: "Jordan stops initiating contact and waits for Sam to reach out first, to avoid being 'that friend' who can't let go", idealRange: [2, 4] },
+            { text: "Jordan stops initiating contact and waits for Sam to reach out first, to avoid being 'that friend' who can't let go", idealRange: [4, 6] },
             { text: "Jordan confronts Sam's partner directly about the changes they've noticed in Sam's behavior", idealRange: [1, 3] },
             { text: "Jordan keeps inviting Sam to things without mentioning the relationship, maintaining the door for connection", idealRange: [7, 9] }
         ]
@@ -21,10 +21,10 @@ const questions = [
     {
         scenario: "Alex manages a small team. One employee, Morgan, has been underperforming for two months—missing deadlines, making errors, and seeming disengaged. Alex has given informal feedback twice. Morgan recently mentioned 'going through some personal stuff' but didn't elaborate. Other team members are starting to complain about picking up Morgan's slack.",
         responses: [
-            { text: "Alex gives Morgan more time and flexibility, understanding that everyone goes through hard periods and work isn't everything", idealRange: [3, 5] },
+            { text: "Alex gives Morgan more time and flexibility, understanding that everyone goes through hard periods and work isn't everything", idealRange: [3, 7] },
             { text: "Alex has a private conversation: 'I've noticed ongoing issues with your work. I want to support you, but I also need to understand if there's something we can do or if this role isn't working right now'", idealRange: [8, 10] },
             { text: "Alex documents all of Morgan's mistakes carefully in case they need evidence for HR later", idealRange: [4, 6] },
-            { text: "Alex redistributes Morgan's important work to reliable team members to protect the team's output", idealRange: [5, 7] },
+            { text: "Alex asks Morgan directly: 'I want to help. What kind of support or adjustments would actually make a difference for you right now?'", idealRange: [7, 9] },
             { text: "Alex tells the complaining team members that Morgan is 'dealing with personal issues' to help them be more understanding", idealRange: [1, 3] },
             { text: "Alex sets clear, written expectations with specific deadlines and consequences, giving Morgan a formal improvement plan", idealRange: [7, 9] },
             { text: "Alex suggests Morgan take a leave of absence to deal with personal issues, with the job waiting when they're ready", idealRange: [4, 6] }
@@ -132,11 +132,11 @@ function showQuestion() {
         
         const leftLabel = document.createElement('span');
         leftLabel.className = 'rating-label left';
-        leftLabel.textContent = 'Very Inappropriate';
+        leftLabel.textContent = 'Very Unlikely';
         
         const rightLabel = document.createElement('span');
         rightLabel.className = 'rating-label right';
-        rightLabel.textContent = 'Very Appropriate';
+        rightLabel.textContent = 'Very Likely';
         
         const input = document.createElement('input');
         input.type = 'range';
