@@ -9,61 +9,60 @@ const questions = [
     {
         scenario: "Jordan has been friends with Sam for 8 years. Recently, Sam started dating someone Jordan finds controlling—Sam has canceled plans three times, stopped coming to group events, and seems more withdrawn. When Jordan brings it up, Sam gets defensive and says 'You just don't understand our relationship.' Jordan is genuinely worried but also hurt by being shut out.",
         responses: [
-            { text: "Jordan decides to give Sam space and stop bringing it up, trusting that Sam is an adult who can make their own choices", idealRange: [4, 6] },
-            { text: "Jordan tells Sam: 'I've noticed you seem different lately. I miss you and I'm worried. I'm here if you ever want to talk, no pressure'", idealRange: [8, 10] },
-            { text: "Jordan reaches out to Sam's family members to share concerns about the relationship and asks them to intervene", idealRange: [2, 4] },
-            { text: "Jordan writes Sam a long message explaining exactly why the partner seems controlling, with specific examples and articles about unhealthy relationships", idealRange: [3, 5] },
-            { text: "Jordan stops initiating contact and waits for Sam to reach out first, to avoid being 'that friend' who can't let go", idealRange: [4, 6] },
-            { text: "Jordan confronts Sam's partner directly about the changes they've noticed in Sam's behavior", idealRange: [1, 3] },
-            { text: "Jordan keeps inviting Sam to things without mentioning the relationship, maintaining the door for connection", idealRange: [7, 9] }
+            { text: "Jordan decides to give Sam space and stop bringing it up, trusting that Sam is an adult who can make their own choices", idealRange: [2, 9] },
+            { text: "Jordan reaches out to Sam's family members to share concerns about the relationship and asks them to intervene", idealRange: [1, 4] },
+            { text: "Jordan writes Sam a long message explaining exactly why the partner seems controlling, with specific examples and articles about unhealthy relationships", idealRange: [1, 8] },
+            { text: "Jordan stops initiating contact and waits for Sam to reach out first, to avoid being 'that friend' who can't let go", idealRange: [2, 8] },
+            { text: "Jordan confronts Sam's partner directly about the changes they've noticed in Sam's behavior", idealRange: [1, 4] },
+            { text: "Jordan keeps inviting Sam to things without mentioning the relationship, maintaining the door for connection", idealRange: [4, 10] }
         ]
     },
     {
         scenario: "Alex manages a small team. One employee, Morgan, has been underperforming for two months—missing deadlines, making errors, and seeming disengaged. Alex has given informal feedback twice. Morgan recently mentioned 'going through some personal stuff' but didn't elaborate. Other team members are starting to complain about picking up Morgan's slack.",
         responses: [
-            { text: "Alex gives Morgan more time and flexibility, understanding that everyone goes through hard periods and work isn't everything", idealRange: [3, 7] },
-            { text: "Alex has a private conversation: 'I've noticed ongoing issues with your work. I want to support you, but I also need to understand if there's something we can do or if this role isn't working right now'", idealRange: [8, 10] },
-            { text: "Alex documents all of Morgan's mistakes carefully in case they need evidence for HR later", idealRange: [4, 6] },
-            { text: "Alex asks Morgan directly: 'I want to help. What kind of support or adjustments would actually make a difference for you right now?'", idealRange: [7, 9] },
-            { text: "Alex tells the complaining team members that Morgan is 'dealing with personal issues' to help them be more understanding", idealRange: [1, 3] },
-            { text: "Alex sets clear, written expectations with specific deadlines and consequences, giving Morgan a formal improvement plan", idealRange: [7, 9] },
-            { text: "Alex suggests Morgan take a leave of absence to deal with personal issues, with the job waiting when they're ready", idealRange: [4, 6] }
+            { text: "Alex gives Morgan more time and flexibility, understanding that everyone goes through hard periods and work isn't everything", idealRange: [2, 8] },
+            { text: "Alex has a private conversation: 'I've noticed ongoing issues with your work. I want to support you, but I also need to understand if there's something we can do or if this role isn't working right now'", idealRange: [5, 10] },
+            { text: "Alex documents all of Morgan's mistakes carefully in case they need evidence for HR later", idealRange: [2, 9] },
+            { text: "Alex asks Morgan directly: 'I want to help. What kind of support or adjustments would actually make a difference for you right now?'", idealRange: [5, 10] },
+            { text: "Alex tells the complaining team members that Morgan is 'dealing with personal issues' to help them be more understanding", idealRange: [1, 4] },
+            { text: "Alex sets clear, written expectations with specific deadlines and consequences, giving Morgan a formal improvement plan", idealRange: [3, 10] },
+            { text: "Alex suggests Morgan take a leave of absence to deal with personal issues, with the job waiting when they're ready", idealRange: [2, 8] }
         ]
     },
     {
         scenario: "Casey and their partner have been together for 3 years. Recently, Casey discovered their partner has been texting an ex regularly—friendly conversations, nothing overtly romantic, but the partner never mentioned it. When Casey brings it up, the partner says 'It's nothing, we're just friends, and I didn't tell you because I knew you'd overreact.' Casey feels hurt and unsure whether their discomfort is reasonable.",
         responses: [
-            { text: "Casey accepts the explanation and tries to let it go, recognizing that jealousy is often insecurity rather than intuition", idealRange: [2, 4] },
-            { text: "Casey says: 'I'm not saying you can't have friends, but the secrecy bothers me more than the texting. I need us to be honest with each other'", idealRange: [8, 10] },
-            { text: "Casey asks to see all the text messages to verify that nothing inappropriate happened", idealRange: [3, 5] },
-            { text: "Casey gives an ultimatum: stop texting the ex or the relationship is over", idealRange: [2, 4] },
-            { text: "Casey focuses on their own behavior, wondering if they've been too jealous or controlling in the past to make their partner hide things", idealRange: [4, 6] },
-            { text: "Casey tells close friends about the situation to get outside perspective on whether they're overreacting", idealRange: [5, 7] },
-            { text: "Casey insists on meeting the ex in person so they can assess the dynamic themselves", idealRange: [3, 5] }
+            { text: "Casey accepts the explanation and tries to let it go, recognizing that jealousy is often insecurity rather than intuition", idealRange: [1, 8] },
+            { text: "Casey says: 'I'm not saying you can't have friends, but the secrecy bothers me more than the texting. I need us to be honest with each other'", idealRange: [5, 10] },
+            { text: "Casey asks to see all the text messages to verify that nothing inappropriate happened", idealRange: [1, 8] },
+            { text: "Casey gives an ultimatum: stop texting the ex or the relationship is over", idealRange: [1, 7] },
+            { text: "Casey focuses on their own behavior, wondering if they've been too jealous or controlling in the past to make their partner hide things", idealRange: [2, 9] },
+            { text: "Casey tells close friends about the situation to get outside perspective on whether they're overreacting", idealRange: [3, 9] },
+            { text: "Casey insists on meeting the ex in person so they can assess the dynamic themselves", idealRange: [1, 8] }
         ]
     },
     {
         scenario: "River's elderly parent has been making increasingly poor financial decisions—giving money to obvious phone scams, buying unnecessary insurance policies, forgetting bills. River is worried about cognitive decline but also respects that the parent is a capable adult who has always valued independence. The parent gets angry and says 'I'm not a child' when River tries to help.",
         responses: [
-            { text: "River backs off and respects the parent's autonomy, understanding that dignity matters more than preventing every mistake", idealRange: [2, 4] },
-            { text: "River has a gentle conversation: 'I've noticed some things that worry me. Can we talk about setting up some safeguards together, just in case?'", idealRange: [7, 9] },
-            { text: "River secretly monitors the parent's bank accounts and mail to catch problems before they get worse", idealRange: [3, 5] },
-            { text: "River contacts a doctor to discuss the parent's cognitive state without the parent's knowledge", idealRange: [4, 6] },
-            { text: "River involves other family members to present a united front and convince the parent to accept help", idealRange: [5, 7] },
-            { text: "River consults an elder law attorney about options for financial protection, even if the parent objects", idealRange: [6, 8] },
-            { text: "River sets up automatic bill payments and fraud alerts on the parent's accounts after getting reluctant permission", idealRange: [8, 10] }
+            { text: "River backs off and respects the parent's autonomy, understanding that dignity matters more than preventing every mistake", idealRange: [1, 8] },
+            { text: "River has a gentle conversation: 'I've noticed some things that worry me. Can we talk about setting up some safeguards together, just in case?'", idealRange: [5, 10] },
+            { text: "River secretly monitors the parent's bank accounts and mail to catch problems before they get worse", idealRange: [1, 6] },
+            { text: "River contacts a doctor to discuss the parent's cognitive state without the parent's knowledge", idealRange: [1, 8] },
+            { text: "River involves other family members to present a united front and convince the parent to accept help", idealRange: [2, 9] },
+            { text: "River consults an elder law attorney about options for financial protection, even if the parent objects", idealRange: [3, 9] },
+            { text: "River sets up automatic bill payments and fraud alerts on the parent's accounts after getting reluctant permission", idealRange: [5, 10] }
         ]
     },
     {
         scenario: "Taylor works on a team where one colleague, Jamie, consistently takes credit for group ideas in meetings, interrupts others, and dismisses feedback. Multiple people have noticed but no one says anything because Jamie is well-liked by upper management. Taylor is frustrated but also aware that complaining could seem like jealousy or create drama.",
         responses: [
-            { text: "Taylor focuses on doing excellent work and trusts that eventually the truth will become apparent to management", idealRange: [3, 5] },
-            { text: "Taylor starts documenting their own contributions in writing before meetings so there's a clear record", idealRange: [7, 9] },
-            { text: "Taylor talks to other colleagues privately to confirm they're not the only one noticing the pattern", idealRange: [5, 7] },
-            { text: "Taylor addresses Jamie directly: 'Hey, in the last meeting you presented the idea I shared with you as your own. I'd appreciate acknowledgment when I contribute'", idealRange: [8, 10] },
-            { text: "Taylor brings the pattern to HR or management, framing it as a workplace culture concern rather than a personal complaint", idealRange: [5, 7] },
-            { text: "Taylor adopts similar tactics—being more assertive about claiming credit and interrupting when needed to be heard", idealRange: [2, 4] },
-            { text: "Taylor mentally disengages, accepting that workplace politics are unavoidable and focusing on other aspects of life", idealRange: [2, 4] }
+            { text: "Taylor focuses on doing excellent work and trusts that eventually the truth will become apparent to management", idealRange: [2, 8] },
+            { text: "Taylor starts documenting their own contributions in writing before meetings so there's a clear record", idealRange: [4, 10] },
+            { text: "Taylor talks to other colleagues privately to confirm they're not the only one noticing the pattern", idealRange: [3, 9] },
+            { text: "Taylor addresses Jamie directly: 'Hey, in the last meeting you presented the idea I shared with you as your own. I'd appreciate acknowledgment when I contribute'", idealRange: [5, 10] },
+            { text: "Taylor brings the pattern to HR or management, framing it as a workplace culture concern rather than a personal complaint", idealRange: [2, 9] },
+            { text: "Taylor adopts similar tactics—being more assertive about claiming credit and interrupting when needed to be heard", idealRange: [1, 6] },
+            { text: "Taylor mentally disengages, accepting that workplace politics are unavoidable and focusing on other aspects of life", idealRange: [1, 7] }
         ]
     }
 ];
