@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self Reflection - Assessment Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Self Reflection</h1>
+            <p class="subtitle">A self-reflection quiz to identify potential toxic traits</p>
+        </header>
+
+        <div id="start-screen" class="screen active">
+            <div class="intro">
+                <h2>Welcome!</h2>
+                <p>This assessment presents realistic interpersonal dilemmas—situations where reasonable people might disagree about the right approach.</p>
+                <p>For each scenario, you'll rate how likely you would be to respond in each way. Be honest—there are no trick questions, and your instinctive reactions reveal the most.</p>
+                <p><strong>5 detailed scenarios with multiple responses each. Takes about 10 minutes. Rate each response 1-10 based on how likely you'd be to do it.</strong></p>
+            </div>
+            <button id="start-btn" class="btn btn-primary">Start Assessment</button>
+        </div>
+
+        <div id="quiz-screen" class="screen">
+            <div class="progress-bar">
+                <div id="progress" class="progress-fill"></div>
+            </div>
+            <div class="question-counter">
+                Scenario <span id="current-question">1</span> of <span id="total-questions">5</span>
+            </div>
+            <div id="question-container">
+                <h2 id="question-text"></h2>
+                <div id="options-container"></div>
+            </div>
+            <button id="next-btn" class="btn btn-primary" disabled>Next</button>
+        </div>
+
+        <div id="results-screen" class="screen">
+            <h2>Your Results</h2>
+            <div id="score-container">
+                <div class="score-circle">
+                    <span id="score-value">0</span>
+                    <span class="score-label">points</span>
+                </div>
+            </div>
+            <div id="result-message"></div>
+            <div id="result-details"></div>
+            <button id="restart-btn" class="btn btn-primary">Take Quiz Again</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
